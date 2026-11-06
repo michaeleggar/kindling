@@ -19,3 +19,7 @@ rclone/rclone
 
 *.old
 .DS_Store
+
+# Generated
+koreader/fonts/
+dist/
