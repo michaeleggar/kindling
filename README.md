@@ -1,6 +1,6 @@
 # kindling
 
-A Kindle is a stack of paper waiting for a match. These are the mods I used to burn the Amazon UI off my jailbroken Kindle Paperwhite (6th gen) and put a KOReader setup in its place: a real home screen, calmer menus, books delivered from Dropbox, and screensavers that aren't ads. The store and its "Customers also bought" rows went up with the rest of the kindling.
+Some mods to burn the Amazon UI off my jailbroken Kindle Paperwhite and put a KOReader setup in its place. Has a real home screen, calmer menus, books delivered from a Dropbox sync, and neat screensavers.
 
 Built on KOReader v2026.07.1.
 
