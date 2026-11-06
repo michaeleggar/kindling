@@ -1,6 +1,10 @@
-# kindle-mods
+# kindling 🔥
 
-My KOReader customizations for a jailbroken Kindle Paperwhite (6th gen), running KOReader v2026.07.1.
+A Kindle is just a stack of paper waiting for a match. These are the mods I used to burn off the Amazon UI on my jailbroken Kindle Paperwhite (6th gen) and replace it with a cozy KOReader setup: a real home screen, calmer menus, Dropbox book delivery, and screensavers that aren't ads.
+
+No ads, no store, no "Customers also bought". Just books.
+
+Built on KOReader v2026.07.1.
 
 ## What's here
 
