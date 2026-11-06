@@ -1,0 +1,38 @@
+/* Calm chapter headings: a small spaced label over a large, regular-weight
+   title, set left, with no boxes or rules. */
+h1, h2, h3 {
+    font-weight: normal !important;
+    text-align: left !important;
+    line-height: 1.15 !important;
+    border: none !important;
+    background: none !important;
+    margin-top: 1.6em !important;
+    margin-bottom: 1.3em !important;
+}
+
+/* Feedbooks-style "Chapter 1" box above the title */
+.chapterHeader {
+    display: block !important;
+    float: none !important;
+    height: auto !important;
+    border: none !important;
+    background: none !important;
+    margin: 0 0 0.55em 0 !important;
+    font-family: "Inter" !important;
+    font-size: 0.36em !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    color: #444444 !important;
+}
+.chapterHeader .translation,
+.chapterHeader .count {
+    float: none !important;
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 1em !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    background: none !important;
+}

@@ -1,0 +1,21 @@
+# Secrets: never commit
+rclone/rclone.conf
+**/*.conf
+!**/*.conf.example
+
+# Personal data / device-specific
+settings.reader.lua*
+*.sqlite3*
+**/history.lua
+**/lookup_history.lua
+**/wikipedia_history.lua
+screensavers-hidden/
+*.sdr/
+
+# Third-party binaries and fonts (fetch separately, see README)
+rclone/rclone
+*.ttf
+*.otf
+
+*.old
+.DS_Store
