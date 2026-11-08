@@ -97,10 +97,46 @@ function KindleUI:keepComicPagesInDarkMode()
     end
 end
 
+-- Word lookups show the definition sheet instead of KOReader's window, which
+-- stays one tap away (More) and still shows Wikipedia results
+function KindleUI:useDefinitionSheet()
+    local dict = self.ui.dictionary
+    if not dict or dict._kindleui_sheet then return end
+    dict._kindleui_sheet = true
+    local showDict = dict.showDict
+    dict.showDict = function(d, word, results, boxes, link, dict_close_callback)
+        if d.is_wiki or not (results and results[1]) then
+            return showDict(d, word, results, boxes, link, dict_close_callback)
+        end
+        d:dismissLookupInfo()
+        -- A link tapped in a definition opens its word in place of the current one
+        if self.dict_sheet and not self.dict_sheet.closed then
+            self.dict_sheet.handed_off = true
+            self.dict_sheet:close()
+        end
+        local DictSheet = require("kindleui_dictsheet")
+        self.dict_sheet = DictSheet:new{
+            plugin = self,
+            dictionary = d,
+            highlight = d.highlight,
+            word = word,
+            results = results,
+            boxes = boxes,
+            link = link,
+            dict_close_callback = dict_close_callback,
+            show_full = function()
+                showDict(d, word, results, boxes, link, dict_close_callback)
+            end,
+        }
+        UIManager:show(self.dict_sheet, "flashui")
+    end
+end
+
 -- Reader taps: the top and bottom edges (between the corners) and the middle
 -- of the page show the reading controls; the sides still turn pages.
 function KindleUI:onReaderReady()
     self:keepComicPagesInDarkMode()
+    self:useDefinitionSheet()
     local show = function(ges)
         -- A link or highlight under the finger comes first
         if self.ui.link and self.ui.link:onTap(nil, ges) then return true end

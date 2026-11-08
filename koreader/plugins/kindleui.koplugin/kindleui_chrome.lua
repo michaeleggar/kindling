@@ -1,6 +1,6 @@
 --[[--
 Reading controls, shown by tapping the page: a top bar (back to the library,
-the title, Aa, bookmark, contents) and a bottom bar with the chapter, page and
+the title, search, Aa, bookmark, contents) and a bottom bar with the chapter, page and
 a scrubber marked at each chapter. Tapping the page again hides them.
 
 @module kindleui_chrome
@@ -40,6 +40,12 @@ function Chrome:build()
     local top_h = S(56)
     local title = ui.doc_props and ui.doc_props.display_title or ""
     local buttons = HorizontalGroup:new{ align = "center" }
+    if ui.search then
+        -- Find in book: next/previous match, or all matches as a list
+        table.insert(buttons, self:hit(iconButton("kindleui.search", 21), {
+            on_tap = function() self:close(); ui.search:onShowFulltextSearchInput() end,
+        }))
+    end
     if ui.rolling then
         table.insert(buttons, self:hit(CenterContainer:new{
             dimen = Geom:new{ w = S(44), h = S(44) },
@@ -73,7 +79,7 @@ function Chrome:build()
                 dimen = Geom:new{ w = W, h = top_h },
                 CenterContainer:new{
                     dimen = Geom:new{ w = W, h = top_h },
-                    K.text(title, "sans_semibold", 14, K.INK, W - S(340)),
+                    K.text(title, "sans_semibold", 14, K.INK, W - S(420)),
                 },
                 LeftContainer:new{
                     dimen = Geom:new{ w = W, h = top_h },
